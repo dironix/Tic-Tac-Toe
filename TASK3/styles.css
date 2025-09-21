@@ -1,0 +1,145 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    color: #6200ea;
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+select, button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #6200ea;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+select {
+    background-color: #3700b3;
+}
+
+button:hover, select:hover {
+    transform: scale(1.05);
+    background-color: #3700b3;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#status {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 10px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 15px;
+    width: 320px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    background-color: #f5f5f5;
+}
+
+.cell.x {
+    color: #d32f2f;
+}
+
+.cell.o {
+    color: #1976d2;
+}
+
+.cell.winner {
+    background-color: #c8e6c9;
+    animation: winner-glow 1s infinite alternate;
+}
+
+@keyframes winner-glow {
+    from { box-shadow: 0 0 10px #4caf50; }
+    to { box-shadow: 0 0 20px #4caf50; }
+}
+
+.cell::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(98, 0, 234, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.cell.clicked::before {
+    width: 200px;
+    height: 200px;
+}
+
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
